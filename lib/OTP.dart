@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:e_commerce_app/logInPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +14,14 @@ class OTP extends StatefulWidget {
 
 class _OTPState extends State<OTP> {
   bool isChecked = false;
+  final _formKey = GlobalKey<FormState>();
+
+    void _continue() {
+    if (_formKey.currentState!.validate()){
+      Navigator.pushNamed(context, '/mainScreen');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,62 +68,127 @@ class _OTPState extends State<OTP> {
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 50,
-                      height: 150,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                child: Form(
+                  key: _formKey,
+                  child: Row(
+                    children: [
+
+
+                      SizedBox(
+                        width: 50,
+                        height: 150,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                            else if (value.isEmpty) {
+                              FocusScope.of(context).previousFocus();
+                            }
+                          },
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a code';
+                            }
+                            return null;
+                          },
                         ),
                       ),
-                    ),
-
-                    SizedBox(width: 25,),
-
-                    SizedBox(
-                      width: 50,
-                      height: 150,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                  
+                      SizedBox(width: 25,),
+                  
+                      SizedBox(
+                        width: 50,
+                        height: 150,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                            else if (value.isEmpty) {
+                              FocusScope.of(context).previousFocus();
+                            }
+                          },    
+                          textAlign: TextAlign.center,                      
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a code';
+                            }
+                            return null;
+                          },
                         ),
                       ),
-                    ),
-
-                    SizedBox(width: 25,),
-
-                    SizedBox(
-                      width: 50,
-                      height: 150,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                  
+                      SizedBox(width: 25,),
+                  
+                      SizedBox(
+                        width: 50,
+                        height: 150,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                            else if (value.isEmpty) {
+                              FocusScope.of(context).previousFocus();
+                            }
+                          },
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a code';
+                            }
+                            return null;
+                          },
                         ),
                       ),
-                    ),
-
-                    SizedBox(width: 25,),
-
-                    SizedBox(
-                      width: 50,
-                      height: 150,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
+                  
+                      SizedBox(width: 25,),
+                  
+                      SizedBox(
+                        width: 50,
+                        height: 150,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                            else if (value.isEmpty) {
+                              FocusScope.of(context).previousFocus();
+                            }
+                          },      
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a code';
+                            }
+                            return null;
+                          },
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
 
@@ -122,19 +197,19 @@ class _OTPState extends State<OTP> {
               SizedBox(
                 width: 300,
                 height: 50,
-                child: ElevatedButton(onPressed:(){
-
-                  Navigator.pushNamed(context, '/logInPage');
-                }, child:
+                child: ElevatedButton(onPressed:() {
+                  Navigator.pushNamed(context, '/mainScreen');
+                  
+                },
+                child:
                 Text("continue"),
-                  style:
-                  ElevatedButton.styleFrom(
-
-                    backgroundColor: Color(0xfffb7a43),
-                    foregroundColor: Colors.white,
-                    textStyle: TextStyle(color: Colors.white, fontSize: 20),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                style:
+                ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xfffb7a43),
+                  foregroundColor: Colors.white,
+                  textStyle: TextStyle(color: Colors.white, fontSize: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                 ),

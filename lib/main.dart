@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:e_commerce_app/homePage.dart';
+import 'package:e_commerce_app/mainScreen.dart';
 import 'package:e_commerce_app/OTP.dart';
 import 'package:e_commerce_app/completeProfile.dart';
 import 'package:e_commerce_app/forgotPassword.dart';
@@ -30,7 +30,8 @@ class myApp extends StatelessWidget {
         '/splashPage': (context) => const splashPage(),
         '/RegisterAccount': (context) => const RegisterAccount(),
         '/OTP': (context) => const OTP(),
-      },
+        '/mainScreen': (context) => const mainScreen(),
+        },
     );
   }
 }
@@ -72,6 +73,7 @@ class _splashPageState extends State<splashPage> {
               ),
 
               SizedBox(height: 150,),
+
               SizedBox(
                 width: 350,
                 height: 50,

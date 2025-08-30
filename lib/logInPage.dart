@@ -12,6 +12,14 @@ class logInPage extends StatefulWidget {
 
 class _logInPageState extends State<logInPage> {
   bool isChecked = false;
+  final _formKey = GlobalKey<FormState>();
+
+  void _continue() {
+    if (_formKey.currentState!.validate()){
+      Navigator.pushNamed(context, '/completeProfile');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,39 +27,65 @@ class _logInPageState extends State<logInPage> {
         child: Center(
           child: Column(
             children: [
+
               AppBar(
                 leading: BackButton(),
               ),
+
               SizedBox(height: 40,),
+
               Text("Welcome Back", style: TextStyle(
-                  fontSize: 28, fontWeight: FontWeight.bold),),
-              Text("Sign in with your email and password\n or continue with social media",  textAlign: TextAlign.center,),
+                  fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+
+              Text("Sign in with your email and password\n or continue with social media",  
+              textAlign: TextAlign.center,
+              ),
 
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 70, 30, 0),
                 child: Column(
                   children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        hintText: "Enter your email",
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),),
-                        suffixIcon: Icon(Icons.email_outlined),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                      ),
-                    ),
 
-                    SizedBox(height: 25,),
+                    Container(
+                      child: Column(
+                      children: [
 
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        hintText: "Enter your password",
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            children: [
+
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: "Email",
+                                  hintText: "Enter your email",
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),),
+                                  suffixIcon: Icon(Icons.person_outline_rounded),
+                                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                                ),
+                                validator: (v) => v == null || !v.contains("@") ? "Invalid email" : null,
+                              ),
+
+                              SizedBox(height: 25,),
+
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: "Password",
+                                  hintText: "Enter your password",
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),),
+                                  suffixIcon: Icon(Icons.person_outline_rounded),
+                                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                                ),
+                                validator: (v) => v == null || v.length < 7 ? "Password must be at least 7 characters" : null,
+                              ),
+
+                              SizedBox(height: 25,),
+                            ],
+                          ),
                         ),
-                        suffixIcon: Icon(Icons.lock_outline_rounded),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                      ),
+                      ],
+                     ),
                     ),
                   ],
                 ),
@@ -98,10 +132,10 @@ class _logInPageState extends State<logInPage> {
               SizedBox(
                 width: 300,
                 height: 50,
-                child: ElevatedButton(onPressed:(){
-                  Navigator.pushNamed(context, '/splashPage');
-                }, child:
-                Text("Continue"),
+                child: ElevatedButton(
+                  onPressed: _continue,
+                  child: Text("Continue"),
+                  
                   style:
                   ElevatedButton.styleFrom(
 

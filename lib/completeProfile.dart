@@ -11,6 +11,14 @@ class completeProfile extends StatefulWidget {
 
 class _completeProfileState extends State<completeProfile> {
   bool isChecked = false;
+  final _formKey = GlobalKey<FormState>();
+  
+  void _continue(){
+    if(_formKey.currentState!.validate()){
+      Navigator.pushNamed(context, '/OTP');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,15 +36,16 @@ class _completeProfileState extends State<completeProfile> {
 
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 70, 30, 0),
-                child: Column(
-                  children: [
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
 
-                    TextField(
+                    TextFormField(
                       decoration: InputDecoration(
                         labelText: "First Name",
                         hintText: "Enter your First Name",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
                         ),
                         suffixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
@@ -44,15 +53,14 @@ class _completeProfileState extends State<completeProfile> {
                             width: 24,
                             height: 24,
                           ),
-                        ),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        ),                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
+                      validator: (value) => value!.isEmpty ? "Please enter your first name" : null,
                     ),
-
 
                     SizedBox(height: 25,),
 
-                    TextField(
+                    TextFormField(
                       decoration: InputDecoration(
                         labelText: "Last Name",
                         hintText: "Enter your Last Name",
@@ -64,13 +72,15 @@ class _completeProfileState extends State<completeProfile> {
                             width: 24,
                             height: 24,
                           ),
-                        ),                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
+                      validator: (value) => value!.isEmpty ? "Please enter your last name" : null,
                     ),
 
                     SizedBox(height: 25,),
 
-                    TextField(
+                    TextFormField(
                       decoration: InputDecoration(
                         labelText: "Phone Number",
                         hintText: "Enter your phone number",
@@ -82,13 +92,15 @@ class _completeProfileState extends State<completeProfile> {
                             width: 24,
                             height: 24,
                           ),
-                        ),                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
+                      validator: (value) => value!.length != 10  ? "Please enter a valid phone number" : null,
                     ),
 
                     SizedBox(height: 25,),
 
-                    TextField(
+                    TextFormField(
                       decoration: InputDecoration(
                         labelText: "Address",
                         hintText: "Enter your phone address",
@@ -100,10 +112,12 @@ class _completeProfileState extends State<completeProfile> {
                             width: 24,
                             height: 24,
                           ),
-                        ),                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
                     ),
-                  ],
+                    ],
+                  )
                 ),
               ),
 
@@ -113,11 +127,10 @@ class _completeProfileState extends State<completeProfile> {
               SizedBox(
                 width: 300,
                 height: 50,
-                child: ElevatedButton(onPressed:(){
-
-                  Navigator.pushNamed(context, '/OTP');
-                }, child:
-                Text("continue"),
+                child: ElevatedButton(
+                  onPressed:_continue,
+                  child: Text("continue"),
+                  
                   style:
                   ElevatedButton.styleFrom(
 
