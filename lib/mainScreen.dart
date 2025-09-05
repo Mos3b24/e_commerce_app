@@ -1,6 +1,13 @@
+import 'package:e_commerce_app/favorites.dart';
+import 'package:e_commerce_app/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:hyperlink/hyperlink.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:e_commerce_app/profile.dart';
+import 'package:e_commerce_app/favorites.dart';
 
-/*void main() {
+
+void main() {
   runApp(myApp());
 }
 
@@ -10,11 +17,17 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: mainScreen(),
+
+      routes: {
+        '/profile': (context) => const profile(),
+        '/favorites': (context) => const favorites(),
+      },
     );
   }
 }
-*/
+
 class mainScreen extends StatefulWidget {
   const mainScreen({super.key});
 
@@ -48,173 +61,480 @@ class _mainScreenState extends State<mainScreen> {
         ),
 
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart_outlined),),  
+          IconButton(onPressed: (){}, icon: SvgPicture.asset('asset/icons/Cart Icon.svg',)),  
           SizedBox(width: 10,),
-          IconButton(onPressed: (){}, icon: Icon(Icons.notifications_active_outlined),),
+          IconButton(onPressed: (){}, icon: SvgPicture.asset('asset/icons/Bell.svg',),),
           SizedBox(width: 10,),
         ],
       ),
 
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+        
+              SizedBox(height: 20,),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  height: 120,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Color(0xff4b3298),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+        
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "A Summer Surprise",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            ),
+                        ),
+                    
+                        SizedBox(height: 8),
+                    
+                        Text(
+                          "Cashback 20%",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+        
+              SizedBox(height: 30,),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        
+                  children: [
+                    SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xfffffecde),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: 
+                            Padding(
+                              padding: const EdgeInsets.all(13),
+                              child: SvgPicture.asset('asset/icons/Flash Icon.svg',
+                              color: Color(0xfffeda07a),
+                              ),
+                            )
+                          ),
+                      SizedBox(height: 8,),
+                      Text("Flash\nDeal", textAlign: TextAlign.center),
+                        ],
+                      ),
+                    ),
+        
+                    SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xfffffecde),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(13),
+                              child: SvgPicture.asset('asset/icons/Bill Icon.svg',
+                              color: Color(0xfffeda07a),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8,),
+                          Text("Bill", textAlign: TextAlign.center),
+                        ],
+                      ),
+                    ),
+        
+                    SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xfffffecde),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(13),
+                              child: SvgPicture.asset('asset/icons/Game Icon.svg',
+                              color: Color(0xfffeda07a),
+                              ),
+                            ),
+                          ),
+                      SizedBox(height: 8,),
+                      Text("Game", textAlign: TextAlign.center),                      
+                        ],
+                      ),
+                    ),
+        
+                    SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xfffffecde),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(13),
+                              child: SvgPicture.asset('asset/icons/Gift Icon.svg',
+                              color: Color(0xfffeda07a),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8,),
+                          Text("Daily\nGift", textAlign: TextAlign.center),
+                        ],
+                      ),
+                    ),
+        
+                    SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xfffffecde),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(13),
+                              child: SvgPicture.asset('asset/icons/Discover.svg',
+                              color: Color(0xfffeda07a),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8,),
+                          Text("More", textAlign: TextAlign.center),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+        
+              SizedBox(height: 20,),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:  25),
+                child: Row(
+                  children: [
+                    Text("Special for you",
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
+                    ),
+                
+                    SizedBox(width: 90,),
+                
+                
+                    TextButton(onPressed: (){}, 
+                    child: Text("See More", style: TextStyle(
+                      color: Colors.grey
+                    ),)
+                    )
+                  ],
+                ),
+              ),
+        
+              SizedBox(height: 20,),
 
-            SizedBox(height: 20,),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
+              Container(
+                padding: EdgeInsets.only(left: 25),
                 height: 120,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Color(0xff4b3298),
-                  borderRadius: BorderRadius.circular(15),
-                ),
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 2,
+                  separatorBuilder: (context, index) => const SizedBox(width: 25),
+                  itemBuilder: (context, index) {
 
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "A Summer Surprise",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
+                    final products = [
+                      {
+                        "title": "Smartphone",
+                        "subtitle": "18 brands",
+                        "image": "asset/image/Image Banner 2.png"
+                      },
+                      {
+                        "title": "Smartphone",
+                        "subtitle": "18 brands",
+                        "image": "asset/image/Image Banner 3.png"
+                      },
+                    ];
+
+                    return Stack(
+                      alignment: AlignmentDirectional.topStart,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 250,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              products[index]["image"]!,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                      ),
-                  
-                      SizedBox(height: 8),
-                  
-                      Text(
-                        "Cashback 20%",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                products[index]["title"]!,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+
+                              Text(
+                                products[index]["subtitle"]!,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
-            ),
-
-            SizedBox(height: 20,),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.flash_on, color: Colors.deepOrange),
-                      ),
-                  SizedBox(height: 8,),
-                  Text("Flash\nDeal", textAlign: TextAlign.center),
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.receipt_long, color: Colors.deepOrange),
-                      ),
-                      SizedBox(height: 8,),
-                      Text("Bill", textAlign: TextAlign.center),
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.videogame_asset, color: Colors.deepOrange),
-                      ),
-                  SizedBox(height: 8,),
-                  Text("Game", textAlign: TextAlign.center),                      
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.card_giftcard, color: Colors.deepOrange),
-                      ),
-                      SizedBox(height: 8,),
-                      Text("Daily\nGift", textAlign: TextAlign.center),
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.more_horiz, color: Colors.deepOrange),
-                      ),
-                      SizedBox(height: 8,),
-                      Text("More", textAlign: TextAlign.center),
-                    ],
-                  ),
-                ],
+                      
+              SizedBox(height: 20,),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal:  25),
+                child: Row(
+                  children: [
+                    Text("Popular Products",
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
+                    ),
+                
+                    SizedBox(width: 66,),
+                
+                
+                    TextButton(onPressed: (){}, 
+                    child: Text("See More", style: TextStyle(
+                      color: Colors.grey
+                    ),)
+                    )
+                  ],
+                ),
               ),
-            ),
 
-            SizedBox(height: 20,),
+              Container(
+                height: 220,
+                //width: 220,
+                padding: EdgeInsets.only(left: 35),
 
-          ],
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('asset/image/Image Popular Product 1.png', 
+                           height: 120,
+                           width: 120,
+                          ),
+                          Text("Wireless Controller\n for PS4"),
+                          SizedBox(height: 7),
+                          Row(
+                            children: [
+                              Text("\$64.99",
+                               style: TextStyle(
+                                color: Color(0xffffe7c4b),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                               ),
+                              ),
+                              SizedBox(width: 45),
+                              SvgPicture.asset('asset/icons/Heart Icon.svg',height: 15, width: 15,)
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(width: 25),
+
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('asset/image/Image Popular Product 2.png', 
+                           height: 120,
+                           width: 120,
+                          ),
+                          Text("Nike Sport White-\nMan Pant"),
+                          SizedBox(height: 7),
+                          Row(
+                            children: [
+                              Text("\$50.5",
+                               style: TextStyle(
+                                color: Color(0xffffe7c4b),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                               ),
+                              ),
+                              SizedBox(width: 45),
+                              SvgPicture.asset('asset/icons/Heart Icon.svg',height: 15, width: 15,)
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+
+                    SizedBox(width: 25),
+
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          
+                          Image.asset('asset/image/Image Popular Product 3.png', 
+                           height: 120,
+                           width: 120,
+                          ),
+                          Text("Bicycle\nHelmet"),
+                          SizedBox(height: 7),
+                          Row(
+                            children: [
+                              Text("\$36.99",
+                               style: TextStyle(
+                                color: Color(0xffffe7c4b),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                               ),
+                              ),
+                              SizedBox(width: 45),
+                              SvgPicture.asset('asset/icons/Heart Icon.svg',height: 15, width: 15,)
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+
+              
+                        /*Container(
+                            child: Column(
+                              children: [
+                                Image.asset('asset/image/Image Popular Product 1.png'),
+                                Text("Wireless Controller for PS4"),
+                              ],
+                            ),
+                          ),*/
+
+
+        
+            ],
+          ),
         ),
       ),
 
       bottomNavigationBar: BottomNavigationBar(
+
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Color(0xfffb7a43),
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        items: const [
+
+        onTap: (index) {
+          switch (index) {
+            case 0: ;break;
+            case 1: Navigator.pushNamed(context, '/favorites') ;break;
+            case 2: ;break;
+            case 3: Navigator.pushNamed(context, '/profile'); break;
+          }
+        },
+
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: "Home",
+            icon: SvgPicture.asset('asset/icons/Shop Icon.svg',
+            color: Color(0xfffeda07a),
+            ),            
+            label: " ",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.category_outlined),
-            label: "Categories",
+            icon: SvgPicture.asset('asset/icons/Heart Icon.svg',
+            color: Color(0xfffeda07a),
+            ),
+            label: " ",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border_outlined),
-            label: "Favorites",
+            icon: SvgPicture.asset('asset/icons/Chat bubble Icon.svg',
+            color: Color(0xfffeda07a),
+            ),
+            label: " ",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: "Profile",
+            icon: SvgPicture.asset('asset/icons/User Icon.svg',
+            color: Color(0xfffeda07a),
+            ),
+            label: " ",
           ),
         ],
       ),
     );
   }
+}
+
+Widget productList (String name, String imageUrl) {
+  return ListTile(
+    leading: CircleAvatar(
+      backgroundImage: NetworkImage(imageUrl),
+      radius: 30,
+    ),
+    title: Text(name),
+  );
 }

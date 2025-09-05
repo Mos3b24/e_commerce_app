@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'package:e_commerce_app/favorites.dart';
 import 'package:e_commerce_app/mainScreen.dart';
 import 'package:e_commerce_app/OTP.dart';
 import 'package:e_commerce_app/completeProfile.dart';
 import 'package:e_commerce_app/forgotPassword.dart';
 import 'package:e_commerce_app/logInPage.dart';
+import 'package:e_commerce_app/profile.dart';
 import 'package:e_commerce_app/registerAccount.dart';
 import 'package:e_commerce_app/splashPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,6 +33,8 @@ class myApp extends StatelessWidget {
         '/RegisterAccount': (context) => const RegisterAccount(),
         '/OTP': (context) => const OTP(),
         '/mainScreen': (context) => const mainScreen(),
+        '/profile': (context) => const profile(),
+        '/favorites': (context) => const favorites(),
         },
     );
   }

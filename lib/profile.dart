@@ -1,22 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(myApp());
-}
-
-class myApp extends StatelessWidget {
-  const myApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: profile(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class profile extends StatefulWidget {
   const profile({super.key});
 
