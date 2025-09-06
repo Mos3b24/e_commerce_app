@@ -5,6 +5,8 @@ import 'package:hyperlink/hyperlink.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:e_commerce_app/profile.dart';
 import 'package:e_commerce_app/favorites.dart';
+import 'product_card.dart';
+import 'package:provider/provider.dart';
 
 
 void main() {
@@ -369,112 +371,29 @@ class _mainScreenState extends State<mainScreen> {
                 height: 220,
                 //width: 220,
                 padding: EdgeInsets.only(left: 35),
-
+              
                 child: ListView(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: [
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset('asset/image/Image Popular Product 1.png', 
-                           height: 120,
-                           width: 120,
-                          ),
-                          Text("Wireless Controller\n for PS4"),
-                          SizedBox(height: 7),
-                          Row(
-                            children: [
-                              Text("\$64.99",
-                               style: TextStyle(
-                                color: Color(0xffffe7c4b),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                               ),
-                              ),
-                              SizedBox(width: 45),
-                              SvgPicture.asset('asset/icons/Heart Icon.svg',height: 15, width: 15,)
-                            ],
-                          )
-                        ],
-                      ),
+                    ProductCard(
+                      imagePath: 'asset/image/Image Popular Product 1.png',
+                      title: 'Wireless Controller for PS4',
+                      price: '\$64.99',
                     ),
-
-                    SizedBox(width: 25),
-
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset('asset/image/Image Popular Product 2.png', 
-                           height: 120,
-                           width: 120,
-                          ),
-                          Text("Nike Sport White-\nMan Pant"),
-                          SizedBox(height: 7),
-                          Row(
-                            children: [
-                              Text("\$50.5",
-                               style: TextStyle(
-                                color: Color(0xffffe7c4b),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                               ),
-                              ),
-                              SizedBox(width: 45),
-                              SvgPicture.asset('asset/icons/Heart Icon.svg',height: 15, width: 15,)
-                            ],
-                          )
-                        ],
-                      ),
+                    ProductCard(
+                      imagePath: 'asset/image/Image Popular Product 2.png',
+                      title: 'Nike Sport White - Man Pant',
+                      price: '\$50.5',
                     ),
-
-                    SizedBox(width: 25),
-
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          
-                          Image.asset('asset/image/Image Popular Product 3.png', 
-                           height: 120,
-                           width: 120,
-                          ),
-                          Text("Bicycle\nHelmet"),
-                          SizedBox(height: 7),
-                          Row(
-                            children: [
-                              Text("\$36.99",
-                               style: TextStyle(
-                                color: Color(0xffffe7c4b),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                               ),
-                              ),
-                              SizedBox(width: 45),
-                              SvgPicture.asset('asset/icons/Heart Icon.svg',height: 15, width: 15,)
-                            ],
-                          )
-                        ],
-                      ),
+                    ProductCard(
+                      imagePath: 'asset/image/Image Popular Product 3.png',
+                      title: 'Bicycle Helmet',
+                      price: '\$36.99',
                     ),
                   ],
                 ),
               )
-
-              
-                        /*Container(
-                            child: Column(
-                              children: [
-                                Image.asset('asset/image/Image Popular Product 1.png'),
-                                Text("Wireless Controller for PS4"),
-                              ],
-                            ),
-                          ),*/
-
-
-        
             ],
           ),
         ),
